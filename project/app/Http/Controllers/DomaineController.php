@@ -66,11 +66,35 @@ class DomaineController extends Controller
         $domaines = Domaine::find($id);
         $domaines->update([
             'libelle' => $request->libelle,
-            'image' => $request->image->store('images', 'public'),
             'contenu' => $request->contenu,
-            'carte' => $request->carte->store('images', 'public'),
         ]);
         return redirect()->route('gestion_domaines.index')->with('status', 'Domaines modifié avec succès!');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function domaine_image(Request $request, string $id)
+    {
+        $finds = Domaine::find($id);
+        $finds->update([
+            'image' => $request->image->store('images', 'public'),
+        ]);
+
+        return redirect()->back()->with('message', 'La photo a été changée avec succès !');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function cartog_image(Request $request, string $id)
+    {
+        $finds = Domaine::find($id);
+        $finds->update([
+            'carte' => $request->carte->store('images', 'public'),
+        ]);
+
+        return redirect()->back()->with('message', 'La cartographie a été changée avec succès !');
     }
 
     /**

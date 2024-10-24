@@ -5,7 +5,10 @@
     @include('layouts.style')
 </head>
 
-<body>
+<body class="d-flex justify-content-center m-5">
+
+    {{-- <h1 class="m-5">Le site est en cours de travaux !</h1> --}}
+
     <!-- ======= Header ======= -->
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid container-xl d-flex align-items-center">

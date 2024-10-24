@@ -68,11 +68,22 @@ class SousDomaineController extends Controller
         $sousDomaine = SousDomaine::find($id);
         $sousDomaine->update([
             'libelle' => $request->libelle,
-            'image' => $request->image->store('images', 'public'),
-            'domaines_id' => $request->domaines_id,
             'contenu' => $request->contenu,
         ]);
         return redirect()->route('gestion_Sous_domaines.index')->with('status', 'Sous domaines modifié avec succès!');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function SousDomaine_image(Request $request, string $id)
+    {
+        $finds = SousDomaine::find($id);
+        $finds->update([
+            'image' => $request->image->store('images', 'public'),
+        ]);
+
+        return redirect()->back()->with('message', 'L\'image sous domaine a été changée avec succès !');
     }
 
     /**

@@ -52,8 +52,11 @@ Route::get('dashboard_backend', [PageController::class, 'dashboard'])->name('das
 Route::resource('gestion_domaines', DomaineController::class);
 Route::get('detailDomaine/{id}', [PageController::class, 'findDomaine']);
 Route::get('supprimer_domaine/{id}', [DomaineController::class, 'destroy']);
+Route::post('edit_domaine_image/{id}', [DomaineController::class, 'domaine_image']);
+Route::post('edit_cartographie/{id}', [DomaineController::class, 'cartog_image']);
 
 Route::resource('gestion_Sous_domaines', SousDomaineController::class);
+Route::post('edit_sousdomaine_image/{id}', [SousDomaineController::class, 'SousDomaine_image']);
 
 Route::get('detailSousDomaine/{id}', [PageController::class, 'findSousDomaine']);
 
